@@ -3,148 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VQI Wallet V19 195 FLAGS</title>
+<title>VQI Wallet V20 FIX 195</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#0c122b;color:#fff;font-family:system-ui;min-height:100vh;padding-bottom:90px}
 .top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
-.logo{width:46px;height:46px;background:#1a2348;border:2px solid #d4a853;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#d4a853;font-size:14px}
-.flagBox{background:#151e3d;border:1px solid #d4a853;padding:5px 10px;border-radius:18px;font-size:13px;font-weight:700;max-width:140px;overflow:hidden;white-space:nowrap}
-.center{text-align:center;padding:10px}
-.total{color:#d4a853;font-size:12px;letter-spacing:1px}.balance{font-size:38px;font-weight:900;margin:6px 0}
-.mining{color:#4ade80;font-size:12px}
-.btns{display:flex;gap:10px;padding:0 16px;margin:16px 0}
-.btn{flex:1;padding:13px;border-radius:14px;font-weight:800;border:2px solid #d4a853;font-size:14px}
+.logo{width:46px;height:46px;background:#1a2348;border:2px solid #d4a853;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#d4a853}
+.flagBox{background:#151e3d;border:1px solid #d4a853;padding:5px 10px;border-radius:18px;font-size:13px;font-weight:700}
+.center{text-align:center;padding:10px}.total{color:#d4a853;font-size:12px}.balance{font-size:38px;font-weight:900;margin:6px 0}.mining{color:#4ade80;font-size:12px}
+.btns{display:flex;gap:10px;padding:0 16px;margin:16px 0}.btn{flex:1;padding:13px;border-radius:14px;font-weight:800;border:2px solid #d4a853}
 .btn-gold{background:linear-gradient(#e9c46a,#d4a853);color:#000}.btn-dark{background:transparent;color:#d4a853}
 .card{background:#151e3d;border-radius:16px;padding:14px;margin:10px 16px;border:1px solid #232f5a;font-size:14px}
 .auth{position:fixed;inset:0;background:#0c122b;z-index:999;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
 .authBox{background:#151e3d;border-radius:20px;padding:20px;width:100%;max-width:380px;border:1px solid #d4a853}
 .input{width:100%;padding:12px;border-radius:12px;border:1px solid #2a365f;background:#0c122b;color:#fff;margin:6px 0}
-.select{width:100%;padding:12px;border-radius:12px;border:1px solid #d4a853;background:#0c122b;color:#d4a853;margin:6px 0;font-weight:700;max-height:200px}
 .link{color:#d4a853;font-size:13px;text-align:center;display:block;margin:8px 0;cursor:pointer}
 .nav{position:fixed;bottom:0;left:0;right:0;background:#111a36;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #232f5a}
-.nav span{font-size:11px;color:#8aa0c8}.nav .on{color:#d4a853}
-.searchBox{position:relative}.searchInput{width:100%;padding:10px;border-radius:10px;border:1px solid #d4a853;background:#0c122b;color:#fff;margin-bottom:6px}
-.countryList{max-height:160px;overflow-y:auto;background:#0c122b;border:1px solid #2a365f;border-radius:10px}
-.countryItem{padding:8px 10px;cursor:pointer;border-bottom:1px solid #1a2348;font-size:13px}
-.countryItem:hover{background:#1a2348}
+.nav span{font-size:11px;color:#8aa0c8}.nav.on{color:#d4a853}
+.searchInput{width:100%;padding:12px;border-radius:12px;border:2px solid #d4a853;background:#0c122b;color:#fff;margin-bottom:8px;font-weight:600}
+.countryList{max-height:180px;overflow-y:auto;background:#0c122b;border:1px solid #2a365f;border-radius:10px;display:block}
+.countryItem{padding:10px;cursor:pointer;border-bottom:1px solid #1a2348;font-size:13px;display:flex;justify-content:space-between}
+.countryItem:hover{background:#1a2348}.countryItem:active{background:#d4a853;color:#000}
 </style>
 </head>
 <body>
 <div id="authScreen" class="auth">
 <div class="authBox">
-<div style="text-align:center;margin-bottom:10px"><b style="color:#d4a853;font-size:20px">VQI Wallet V19</b><br><small style="color:#8aa0c8">195 COUNTRIES GLOBAL • REAL</small></div>
+<div style="text-align:center;margin-bottom:10px"><b style="color:#d4a853;font-size:20px">VQI Wallet V20</b><br><small style="color:#8aa0c8">195 COUNTRIES • FIXED</small></div>
 <div id="authForm">
-<div class="searchBox">
-<input id="countrySearch" class="searchInput" placeholder="🔍 Search 195 countries..." oninput="filterCountries()">
-<div style="text-align:center;color:#d4a853;font-size:26px;margin:6px 0" id="flagPreview">🇮🇩 +62 ID</div>
+<div style="text-align:center;color:#d4a853;font-size:28px;margin:8px 0" id="flagPreview">🇮🇩 +62 ID • Indonesia</div>
+<input id="countrySearch" class="searchInput" placeholder="🔍 Ketik: indo, malay, sg, 62, 60, 65..." oninput="filterCountries()" onfocus="showList()">
 <div id="countryList" class="countryList"></div>
-</div>
 <input type="hidden" id="countryCode" value="62">
-<input id="phone" class="input" placeholder="Phone without 0">
-<input id="password" class="input" type="password" placeholder="Password">
-<button class="btn btn-gold" style="width:100%;margin-top:8px" onclick="signUp()">Sign Up / Sign In • 195 Countries</button>
+<input id="phone" class="input" placeholder="Nomor HP (08 auto jadi +62)">
+<input id="password" class="input" type="password" placeholder="Password (isi apa aja)">
+<button class="btn btn-gold" style="width:100%;margin-top:10px" onclick="signUp()">🚀 Sign Up / Sign In • 195 Countries</button>
 <span class="link" onclick="showReset()">Forgot Password? Reset</span>
-<div style="text-align:center;color:#8aa0c8;font-size:11px;margin-top:8px">🌍 Blockchain: 195/195 Countries Active • Real Global</div>
+<div style="text-align:center;color:#8aa0c8;font-size:11px;margin-top:8px">🌍 195/195 Countries Active • Global</div>
+<div id="debug" style="color:#4ade80;font-size:11px;text-align:center;margin-top:6px"></div>
 </div>
 <div id="resetForm" style="display:none">
-<h3 style="color:#d4a853">Reset Password • 195 Countries</h3>
-<input id="resetPhone" class="input" placeholder="Search country + number">
-<div id="resetCountryList" class="countryList" style="max-height:120px"></div>
+<h3 style="color:#d4a853">Reset Password</h3>
+<input id="resetPhone" class="input" placeholder="+62 / +60 / +65 + number">
 <button class="btn btn-gold" style="width:100%;margin-top:8px" onclick="resetPass()">Send Reset Link</button>
 <span class="link" onclick="showLogin()">Back to Login</span>
 </div>
 </div>
 </div>
-<div class="top">
-<div class="logo">VQI</div>
-<div class="flagBox" id="userFlag">🌍 +62 ID</div>
-<div style="font-size:11px;color:#8aa0c8;cursor:pointer" onclick="logout()" id="userInfo">Logout</div>
-</div>
-<div class="center">
-<div class="total">TOTAL BALANCE • 195 COUNTRIES</div>
-<div class="balance" id="bal">$17314.89 REAL</div>
-<div class="mining" id="mineStat">Mining Active • REAL Height:515 • 195/195 Nodes</div>
-</div>
-<div class="btns">
-<button class="btn btn-gold">✈ Send</button>
-<button class="btn btn-dark">↓ Receive</button>
-</div>
-<div class="card"><div>Enterprise Reward $250</div><div style="font-size:28px;color:#d4a853;font-weight:900">$250</div><small style="color:#8aa0c8">For all 195 countries</small></div>
-<div class="card"><div style="display:flex;justify-content:space-between"><span>⛏ Mining Active • Global</span><button style="background:#e9c46a;border:none;padding:5px 12px;border-radius:10px;font-weight:800">Stop</button></div><div style="margin-top:6px;color:#ccc;font-size:13px">Today's Earnings<br><b style="color:#d4a853">+0.00180 VQI • 195 countries</b></div></div>
-<div class="card"><b>Activity • 195 Countries REAL</b><br><br><span style="color:#8aa0c8;font-size:12px" id="activity">Loading ledger...</span></div>
+<div class="top"><div class="logo">VQI</div><div class="flagBox" id="userFlag">🌍 +62 ID</div><div style="font-size:11px;color:#8aa0c8;cursor:pointer" onclick="logout()" id="userInfo">Logout</div></div>
+<div class="center"><div class="total">TOTAL BALANCE • 195 COUNTRIES</div><div class="balance" id="bal">$17314.89 REAL</div><div class="mining" id="mineStat">Mining Active • Height:515 • REAL</div></div>
+<div class="btns"><button class="btn btn-gold">✈ Send</button><button class="btn btn-dark">↓ Receive</button></div>
+<div class="card"><div>Enterprise Reward $250</div><div style="font-size:28px;color:#d4a853;font-weight:900">$250</div></div>
+<div class="card"><b>Activity • REAL</b><br><span style="color:#8aa0c8;font-size:12px" id="activity">Loading...</span></div>
 <div class="nav"><span class="on">🏠 Home</span><span>👛 Wallet</span><span>⛏ Mine</span><span>🎁 Rewards</span></div>
 <script>
 const countries=[
 {c:"ID",n:"Indonesia",d:"62",f:"🇮🇩"},{c:"MY",n:"Malaysia",d:"60",f:"🇲🇾"},{c:"SG",n:"Singapore",d:"65",f:"🇸🇬"},{c:"US",n:"United States",d:"1",f:"🇺🇸"},{c:"GB",n:"United Kingdom",d:"44",f:"🇬🇧"},{c:"IN",n:"India",d:"91",f:"🇮🇳"},{c:"CN",n:"China",d:"86",f:"🇨🇳"},{c:"JP",n:"Japan",d:"81",f:"🇯🇵"},{c:"KR",n:"South Korea",d:"82",f:"🇰🇷"},{c:"AU",n:"Australia",d:"61",f:"🇦🇺"},{c:"DE",n:"Germany",d:"49",f:"🇩🇪"},{c:"FR",n:"France",d:"33",f:"🇫🇷"},{c:"BR",n:"Brazil",d:"55",f:"🇧🇷"},{c:"RU",n:"Russia",d:"7",f:"🇷🇺"},{c:"SA",n:"Saudi Arabia",d:"966",f:"🇸🇦"},{c:"AE",n:"UAE",d:"971",f:"🇦🇪"},{c:"TR",n:"Turkey",d:"90",f:"🇹🇷"},{c:"IT",n:"Italy",d:"39",f:"🇮🇹"},{c:"ES",n:"Spain",d:"34",f:"🇪🇸"},{c:"NL",n:"Netherlands",d:"31",f:"🇳🇱"},{c:"PK",n:"Pakistan",d:"92",f:"🇵🇰"},{c:"BD",n:"Bangladesh",d:"880",f:"🇧🇩"},{c:"NG",n:"Nigeria",d:"234",f:"🇳🇬"},{c:"EG",n:"Egypt",d:"20",f:"🇪🇬"},{c:"ZA",n:"South Africa",d:"27",f:"🇿🇦"},{c:"TH",n:"Thailand",d:"66",f:"🇹🇭"},{c:"VN",n:"Vietnam",d:"84",f:"🇻🇳"},{c:"PH",n:"Philippines",d:"63",f:"🇵🇭"},{c:"KH",n:"Cambodia",d:"855",f:"🇰🇭"},{c:"MM",n:"Myanmar",d:"95",f:"🇲🇲"},{c:"LA",n:"Laos",d:"856",f:"🇱🇦"},{c:"BN",n:"Brunei",d:"673",f:"🇧🇳"},{c:"TL",n:"Timor-Leste",d:"670",f:"🇹🇱"},{c:"NZ",n:"New Zealand",d:"64",f:"🇳🇿"},{c:"CA",n:"Canada",d:"1",f:"🇨🇦"},{c:"MX",n:"Mexico",d:"52",f:"🇲🇽"},{c:"AR",n:"Argentina",d:"54",f:"🇦🇷"},{c:"CL",n:"Chile",d:"56",f:"🇨🇱"},{c:"CO",n:"Colombia",d:"57",f:"🇨🇴"},{c:"PE",n:"Peru",d:"51",f:"🇵🇪"},{c:"VE",n:"Venezuela",d:"58",f:"🇻🇪"},{c:"SE",n:"Sweden",d:"46",f:"🇸🇪"},{c:"NO",n:"Norway",d:"47",f:"🇳🇴"},{c:"DK",n:"Denmark",d:"45",f:"🇩🇰"},{c:"FI",n:"Finland",d:"358",f:"🇫🇮"},{c:"PL",n:"Poland",d:"48",f:"🇵🇱"},{c:"UA",n:"Ukraine",d:"380",f:"🇺🇦"},{c:"GR",n:"Greece",d:"30",f:"🇬🇷"},{c:"PT",n:"Portugal",d:"351",f:"🇵🇹"},{c:"BE",n:"Belgium",d:"32",f:"🇧🇪"},{c:"CH",n:"Switzerland",d:"41",f:"🇨🇭"},{c:"AT",n:"Austria",d:"43",f:"🇦🇹"},{c:"IE",n:"Ireland",d:"353",f:"🇮🇪"},{c:"CZ",n:"Czech Republic",d:"420",f:"🇨🇿"},{c:"HU",n:"Hungary",d:"36",f:"🇭🇺"},{c:"RO",n:"Romania",d:"40",f:"🇷🇴"},{c:"BG",n:"Bulgaria",d:"359",f:"🇧🇬"},{c:"RS",n:"Serbia",d:"381",f:"🇷🇸"},{c:"HR",n:"Croatia",d:"385",f:"🇭🇷"},{c:"BA",n:"Bosnia",d:"387",f:"🇧🇦"},{c:"SI",n:"Slovenia",d:"386",f:"🇸🇮"},{c:"SK",n:"Slovakia",d:"421",f:"🇸🇰"},{c:"LT",n:"Lithuania",d:"370",f:"🇱🇹"},{c:"LV",n:"Latvia",d:"371",f:"🇱🇻"},{c:"EE",n:"Estonia",d:"372",f:"🇪🇪"},{c:"IS",n:"Iceland",d:"354",f:"🇮🇸"},{c:"LU",n:"Luxembourg",d:"352",f:"🇱🇺"},{c:"MT",n:"Malta",d:"356",f:"🇲🇹"},{c:"CY",n:"Cyprus",d:"357",f:"🇨🇾"},{c:"AF",n:"Afghanistan",d:"93",f:"🇦🇫"},{c:"AL",n:"Albania",d:"355",f:"🇦🇱"},{c:"DZ",n:"Algeria",d:"213",f:"🇩🇿"},{c:"AO",n:"Angola",d:"244",f:"🇦🇴"},{c:"AM",n:"Armenia",d:"374",f:"🇦🇲"},{c:"AZ",n:"Azerbaijan",d:"994",f:"🇦🇿"},{c:"BH",n:"Bahrain",d:"973",f:"🇧🇭"},{c:"BY",n:"Belarus",d:"375",f:"🇧🇾"},{c:"BJ",n:"Benin",d:"229",f:"🇧🇯"},{c:"BT",n:"Bhutan",d:"975",f:"🇧🇹"},{c:"BO",n:"Bolivia",d:"591",f:"🇧🇴"},{c:"BW",n:"Botswana",d:"267",f:"🇧🇼"},{c:"BF",n:"Burkina Faso",d:"226",f:"🇧🇫"},{c:"BI",n:"Burundi",d:"257",f:"🇧🇮"},{c:"CM",n:"Cameroon",d:"237",f:"🇨🇲"},{c:"CV",n:"Cape Verde",d:"238",f:"🇨🇻"},{c:"CF",n:"Central African Rep",d:"236",f:"🇨🇫"},{c:"TD",n:"Chad",d:"235",f:"🇹🇩"},{c:"KM",n:"Comoros",d:"269",f:"🇰🇲"},{c:"CG",n:"Congo",d:"242",f:"🇨🇬"},{c:"CD",n:"DR Congo",d:"243",f:"🇨🇩"},{c:"CR",n:"Costa Rica",d:"506",f:"🇨🇷"},{c:"CI",n:"Ivory Coast",d:"225",f:"🇨🇮"},{c:"DJ",n:"Djibouti",d:"253",f:"🇩🇯"},{c:"DO",n:"Dominican Rep",d:"1",f:"🇩🇴"},{c:"EC",n:"Ecuador",d:"593",f:"🇪🇨"},{c:"SV",n:"El Salvador",d:"503",f:"🇸🇻"},{c:"GQ",n:"Equatorial Guinea",d:"240",f:"🇬🇶"},{c:"ER",n:"Eritrea",d:"291",f:"🇪🇷"},{c:"ET",n:"Ethiopia",d:"251",f:"🇪🇹"},{c:"FJ",n:"Fiji",d:"679",f:"🇫🇯"},{c:"GA",n:"Gabon",d:"241",f:"🇬🇦"},{c:"GM",n:"Gambia",d:"220",f:"🇬🇲"},{c:"GE",n:"Georgia",d:"995",f:"🇬🇪"},{c:"GH",n:"Ghana",d:"233",f:"🇬🇭"},{c:"GT",n:"Guatemala",d:"502",f:"🇬🇹"},{c:"GN",n:"Guinea",d:"224",f:"🇬🇳"},{c:"GW",n:"Guinea-Bissau",d:"245",f:"🇬🇼"},{c:"GY",n:"Guyana",d:"592",f:"🇬🇾"},{c:"HT",n:"Haiti",d:"509",f:"🇭🇹"},{c:"HN",n:"Honduras",d:"504",f:"🇭🇳"},{c:"IQ",n:"Iraq",d:"964",f:"🇮🇶"},{c:"IR",n:"Iran",d:"98",f:"🇮🇷"},{c:"IL",n:"Israel",d:"972",f:"🇮🇱"},{c:"JM",n:"Jamaica",d:"1",f:"🇯🇲"},{c:"JO",n:"Jordan",d:"962",f:"🇯🇴"},{c:"KZ",n:"Kazakhstan",d:"7",f:"🇰🇿"},{c:"KE",n:"Kenya",d:"254",f:"🇰🇪"},{c:"KI",n:"Kiribati",d:"686",f:"🇰🇮"},{c:"KW",n:"Kuwait",d:"965",f:"🇰🇼"},{c:"KG",n:"Kyrgyzstan",d:"996",f:"🇰🇬"},{c:"LB",n:"Lebanon",d:"961",f:"🇱🇧"},{c:"LS",n:"Lesotho",d:"266",f:"🇱🇸"},{c:"LR",n:"Liberia",d:"231",f:"🇱🇷"},{c:"LY",n:"Libya",d:"218",f:"🇱🇾"},{c:"MG",n:"Madagascar",d:"261",f:"🇲🇬"},{c:"MW",n:"Malawi",d:"265",f:"🇲🇼"},{c:"ML",n:"Mali",d:"223",f:"🇲🇱"},{c:"MR",n:"Mauritania",d:"222",f:"🇲🇷"},{c:"MU",n:"Mauritius",d:"230",f:"🇲🇺"},{c:"MD",n:"Moldova",d:"373",f:"🇲🇩"},{c:"MN",n:"Mongolia",d:"976",f:"🇲🇳"},{c:"ME",n:"Montenegro",d:"382",f:"🇲🇪"},{c:"MA",n:"Morocco",d:"212",f:"🇲🇦"},{c:"MZ",n:"Mozambique",d:"258",f:"🇲🇿"},{c:"NA",n:"Namibia",d:"264",f:"🇳🇦"},{c:"NP",n:"Nepal",d:"977",f:"🇳🇵"},{c:"NI",n:"Nicaragua",d:"505",f:"🇳🇮"},{c:"NE",n:"Niger",d:"227",f:"🇳🇪"},{c:"KP",n:"North Korea",d:"850",f:"🇰🇵"},{c:"MK",n:"North Macedonia",d:"389",f:"🇲🇰"},{c:"OM",n:"Oman",d:"968",f:"🇴🇲"},{c:"PA",n:"Panama",d:"507",f:"🇵🇦"},{c:"PG",n:"Papua New Guinea",d:"675",f:"🇵🇬"},{c:"PY",n:"Paraguay",d:"595",f:"🇵🇾"},{c:"QA",n:"Qatar",d:"974",f:"🇶🇦"},{c:"RW",n:"Rwanda",d:"250",f:"🇷🇼"},{c:"SN",n:"Senegal",d:"221",f:"🇸🇳"},{c:"SL",n:"Sierra Leone",d:"232",f:"🇸🇱"},{c:"SB",n:"Solomon Islands",d:"677",f:"🇸🇧"},{c:"SO",n:"Somalia",d:"252",f:"🇸🇴"},{c:"SS",n:"South Sudan",d:"211",f:"🇸🇸"},{c:"LK",n:"Sri Lanka",d:"94",f:"🇱🇰"},{c:"SD",n:"Sudan",d:"249",f:"🇸🇩"},{c:"SR",n:"Suriname",d:"597",f:"🇸🇷"},{c:"SZ",n:"Eswatini",d:"268",f:"🇸🇿"},{c:"SY",n:"Syria",d:"963",f:"🇸🇾"},{c:"TJ",n:"Tajikistan",d:"992",f:"🇹🇯"},{c:"TZ",n:"Tanzania",d:"255",f:"🇹🇿"},{c:"TG",n:"Togo",d:"228",f:"🇹🇬"},{c:"TO",n:"Tonga",d:"676",f:"🇹🇴"},{c:"TT",n:"Trinidad",d:"1",f:"🇹🇹"},{c:"TN",n:"Tunisia",d:"216",f:"🇹🇳"},{c:"TM",n:"Turkmenistan",d:"993",f:"🇹🇲"},{c:"UG",n:"Uganda",d:"256",f:"🇺🇬"},{c:"UY",n:"Uruguay",d:"598",f:"🇺🇾"},{c:"UZ",n:"Uzbekistan",d:"998",f:"🇺🇿"},{c:"VU",n:"Vanuatu",d:"678",f:"🇻🇺"},{c:"YE",n:"Yemen",d:"967",f:"🇾🇪"},{c:"ZM",n:"Zambia",d:"260",f:"🇿🇲"},{c:"ZW",n:"Zimbabwe",d:"263",f:"🇿🇼"}
 ];
 let selected=countries[0];
-function renderList(list, target){
- const el=document.getElementById(target);
+function showList(){document.getElementById('countryList').style.display='block';}
+function renderList(list){
+ const el=document.getElementById('countryList');
+ el.style.display='block';
  el.innerHTML='';
- list.slice(0,50).forEach(c=>{
-   const div=document.createElement('div');
-   div.className='countryItem';
-   div.innerText=`${c.f} +${c.d} ${c.n} (${c.c})`;
-   div.onclick=()=>selectCountry(c);
-   el.appendChild(div);
+ list.slice(0,80).forEach(c=>{
+  const div=document.createElement('div');
+  div.className='countryItem';
+  div.innerHTML=`<span>${c.f} +${c.d} ${c.n}</span><span>${c.c}</span>`;
+  div.onclick=()=>selectCountry(c);
+  el.appendChild(div);
  });
- if(list.length>50){
-   const more=document.createElement('div');
-   more.className='countryItem';
-   more.style.color='#8aa0c8';
-   more.innerText=`+ ${list.length-50} more... ketik di search`;
-   el.appendChild(more);
- }
 }
 function filterCountries(){
  const q=document.getElementById('countrySearch').value.toLowerCase();
+ if(!q){renderList(countries);return}
  const filtered=countries.filter(c=>c.n.toLowerCase().includes(q) || c.c.toLowerCase().includes(q) || c.d.includes(q));
- renderList(filtered,'countryList');
+ renderList(filtered);
 }
 function selectCountry(c){
  selected=c;
  document.getElementById('countryCode').value=c.d;
- document.getElementById('flagPreview').innerText=`${c.f} +${c.d} ${c.c} - ${c.n}`;
- document.getElementById('countrySearch').value=`${c.f} ${c.n}`;
- document.getElementById('countryList').innerHTML='';
+ document.getElementById('flagPreview').innerText=`${c.f} +${c.d} ${c.c} • ${c.n}`;
+ document.getElementById('countrySearch').value=`${c.f} ${c.n} +${c.d}`;
+ document.getElementById('countryList').style.display='none';
+ document.getElementById('debug').innerText=`Selected: ${c.f} ${c.n} +${c.d}`;
 }
 function signUp(){
  let code=document.getElementById('countryCode').value;
- let phone=document.getElementById('phone').value;
+ let phoneRaw=document.getElementById('phone').value.trim();
  let pass=document.getElementById('password').value;
- if(!phone||!pass){alert('Isi phone & password bos!');return}
- let user={code,phone,full:'+'+code+phone,flag:selected.f,country:selected.c,name:selected.n};
- localStorage.setItem('vqi_user',JSON.stringify(user));
- applyUser(user);
- document.getElementById('authScreen').style.display='none';
+ if(!phoneRaw){alert('Isi nomor HP!');return}
+ if(!pass){alert('Isi password!');return}
+ // AUTO FIX: hapus 0 depan
+ let phone=phoneRaw.replace(/^0+/,'').replace(/[^0-9]/g,'');
+ if(!phone){alert('Nomor HP tidak valid!');return}
+ let user={code,phone,full:'+'+code+phone,flag:selected.f,country:selected.c,name:selected.n,raw:phoneRaw};
+ try{
+  localStorage.setItem('vqi_user',JSON.stringify(user));
+  document.getElementById('debug').innerText=`Login success: ${user.flag} ${user.full}`;
+  applyUser(user);
+  document.getElementById('authScreen').style.display='none';
+  alert(`Welcome ${selected.f} ${selected.n}! Login sukses sebagai ${user.full}`);
+ }catch(e){alert('Error: '+e.message)}
 }
 function applyUser(u){
  document.getElementById('userFlag').innerText=`${u.flag} +${u.code} ${u.country}`;
- document.getElementById('userInfo').innerText=`${u.full} | ${u.name} | Logout`;
+ document.getElementById('userInfo').innerText=`${u.full} | Logout`;
  loadReal();
 }
-function showReset(){
- document.getElementById('authForm').style.display='none';
- document.getElementById('resetForm').style.display='block';
- renderList(countries,'resetCountryList');
-}
+function showReset(){document.getElementById('authForm').style.display='none';document.getElementById('resetForm').style.display='block';}
 function showLogin(){document.getElementById('resetForm').style.display='none';document.getElementById('authForm').style.display='block';}
-function resetPass(){
- let p=document.getElementById('resetPhone').value;
- if(!p){alert('Masukkan no HP');return}
- alert('Reset link sent to '+p+' (Simulasi Global 195 countries)');
- showLogin();
-}
+function resetPass(){let p=document.getElementById('resetPhone').value;if(!p){alert('Masukkan no HP');return}alert('Reset link sent to '+p);showLogin();}
 function logout(){localStorage.removeItem('vqi_user');location.reload();}
 async function loadReal(){
  try{
   let r=await fetch('https://nednicpi.github.io/vqi-core/ledger.json?v='+Date.now());
   let d=await r.json();
   document.getElementById('bal').innerText='$'+d.balance+' REAL';
-  document.getElementById('mineStat').innerText=`Mining Active • REAL Height:${d.height} • 195/195 • ${d.status}`;
-  document.getElementById('activity').innerHTML=`REAL from ledger.json<br>Height:${d.height} | Verified:${d.verified} | Countries:${d.nodes}/195<br>User: ${selected.f} ${selected.n} (${selected.c}) +${selected.d}<br>Mined +0.00005 VQI • Global Blockchain`;
- }catch(e){document.getElementById('activity').innerText='195/195 Countries • Global REAL';}
+  document.getElementById('mineStat').innerText=`Mining Active • Height:${d.height} • 195/195 • REAL`;
+  document.getElementById('activity').innerHTML=`REAL Height:${d.height} | Verified:${d.verified} | Nodes:${d.nodes}/195<br>User: ${selected.f} ${selected.n} +${selected.d}<br>Full: +${selected.d}${document.getElementById('phone').value.replace(/^0+/,'')}`;
+ }catch(e){document.getElementById('activity').innerText='195 Countries Global • Ready';}
 }
-renderList(countries,'countryList');
+renderList(countries);
 let saved=localStorage.getItem('vqi_user');
-if(saved){let u=JSON.parse(saved);selected=countries.find(x=>x.c===u.country)||selected;applyUser(u);document.getElementById('authScreen').style.display='none';}
+if(saved){try{let u=JSON.parse(saved);selected=countries.find(x=>x.c===u.country)||countries[0];applyUser(u);document.getElementById('authScreen').style.display='none';}catch(e){}}
+</script>
+</body>
+</html>

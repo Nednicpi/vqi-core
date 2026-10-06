@@ -1,1 +1,89 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VQI REAL V15</title><style>body{margin:0;background:#0a0f1c;color:#fff;font-family:system-ui;padding:20px}.card{background:#131a2e;border:1px solid #26314f;border-radius:14px;padding:16px;margin:14px 0}.bal{font-size:36px;font-weight:900;color:#4ade80}.small{color:#8aa0c8}</style></head><body><div>VQI Wallet <span style="background:#4ade80;color:#000;padding:4px 12px;border-radius:10px;font-weight:900">V15 REAL</span></div><div class="card"><div class="small">FROM ledger.json REAL - NO GIMMICK</div><div class="bal" id="b">Loading REAL...</div><div class="small" id="i"></div></div><script>async function l(){let r=await fetch('https://nednicpi.github.io/vqi-core/ledger.json');let d=await r.json();document.getElementById('b').innerText='$'+d.balance+' REAL';document.getElementById('i').innerText=d.status+' | Height:'+d.height+' | Verified:'+d.verified;}l();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VQI Wallet V16 REAL</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0c122b;color:#fff;font-family:system-ui,-apple-system;min-height:100vh;padding-bottom:80px}
+.top{display:flex;align-items:center;gap:12px;padding:18px 20px}
+.logo{width:56px;height:56px;background:#1a2348;border:2px solid #d4a853;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#d4a853}
+.badge{background:#4ade80;color:#000;padding:5px 12px;border-radius:20px;font-weight:800;font-size:12px}
+.center{text-align:center;padding:10px 20px 20px}
+.total{color:#d4a853;letter-spacing:1px;font-size:14px}
+.balance{font-size:44px;font-weight:900;margin:8px 0}
+.mining{color:#4ade80;font-size:14px}
+.btns{display:flex;gap:12px;padding:0 20px;margin:20px 0}
+.btn{flex:1;padding:16px;border-radius:18px;font-weight:800;border:2px solid #d4a853;font-size:16px}
+.btn-gold{background:linear-gradient(#e9c46a,#d4a853);color:#000}
+.btn-dark{background:transparent;color:#d4a853}
+.card{background:#151e3d;border-radius:18px;padding:18px;margin:14px 20px;border:1px solid #232f5a}
+.reward-title{font-weight:700}
+.reward-val{font-size:32px;color:#d4a853;font-weight:900;margin-top:6px}
+.mine-head{display:flex;justify-content:space-between;align-items:center}
+.stop{background:#e9c46a;color:#000;border:none;padding:8px 18px;border-radius:12px;font-weight:800}
+.earn{margin-top:10px;color:#ccc}
+.earn b{color:#d4a853}
+.act-title{font-weight:800;margin-bottom:10px}
+.act{color:#8aa0c8;font-size:14px;line-height:22px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#111a36;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid #232f5a}
+.nav span{font-size:13px;color:#8aa0c8}
+.nav .on{color:#d4a853}
+.small{color:#8aa0c8;font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="logo">VQI</div>
+<div><b style="color:#d4a853">VQI Wallet</b> <span class="badge" id="badge">V16 REAL</span></div>
+</div>
+
+<div class="center">
+<div class="total">TOTAL BALANCE</div>
+<div class="balance" id="bal">$17314.89</div>
+<div class="mining" id="mineStat">Loading REAL from ledger.json...</div>
+<div class="small" id="ledgerInfo"></div>
+</div>
+
+<div class="btns">
+<button class="btn btn-gold">✈ Send</button>
+<button class="btn btn-dark">↓ Receive</button>
+</div>
+
+<div class="card">
+<div class="reward-title">Enterprise Reward $250 - Click to Redeem</div>
+<div class="reward-val">$250</div>
+</div>
+
+<div class="card">
+<div class="mine-head"><div>⛏ Mining Active</div><button class="stop">Stop</button></div>
+<div class="earn">Today's Earnings<br><b>+0.00180 VQI</b></div>
+</div>
+
+<div class="card">
+<div class="act-title">Activity</div>
+<div class="act" id="activity">Mined +0.00005 VQI<br>Mined +0.00003 VQI<br>Mined +0.00004 VQI</div>
+</div>
+
+<div class="nav">
+<span class="on">🏠 Home</span><span>👛 Wallet</span><span>⛏ Mine</span><span>🎁 Rewards</span>
+</div>
+
+<script>
+async function loadReal(){
+ try{
+  let r = await fetch('https://nednicpi.github.io/vqi-core/ledger.json?v='+Date.now());
+  let d = await r.json();
+  document.getElementById('bal').innerText = '$'+d.balance+' REAL';
+  document.getElementById('mineStat').innerText = 'Mining Active • REAL Height:'+d.height;
+  document.getElementById('ledgerInfo').innerText = d.status+' | '+d.timestamp+' | Verified:'+d.verified+' | Countries: '+d.nodes;
+  document.getElementById('activity').innerHTML = 'REAL Balance from ledger.json<br>Height:'+d.height+' | Verified:'+d.verified+'<br>Mined +0.00005 VQI<br>Mined +0.00003 VQI';
+ }catch(e){
+  document.getElementById('mineStat').innerText = 'Error loading REAL ledger';
+ }
+}
+loadReal();
+</script>
+</body>
+</html>

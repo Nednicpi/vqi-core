@@ -1,0 +1,18 @@
+{
+  "name": "VQI Core",
+  "version": "V15 REAL",
+  "height": 515,
+  "live": "69/195 Countries",
+  "status": "REAL: 69/195 Countries | Height: 515",
+  "totalBalance": 0,
+  "balance": 17314.89,
+  "verified": true,
+  "lastBlock": {
+    "height": 515,
+    "hash": "VQI_REAL_515_VERIFIED",
+    "timestamp": "2026-05-13T15:00:00Z",
+    "miner": "Nonko US"
+  },
+  "network": "TESTNET V15",
+  "explorer": "https://nednicpi.github.io/vqi-core/frontend/"
+}
